@@ -30,6 +30,7 @@ namespace DotNetCoreSqlDb
             // Use SQL Database if in Azure, otherwise, use SQLite
            services.AddDbContext<MyDatabaseContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+            services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
