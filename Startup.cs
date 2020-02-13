@@ -25,7 +25,7 @@ namespace DotNetCoreSqlDb
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc()      
+            services.AddMvc();  
             services.AddDbContext<MyDatabaseContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));         
         }
