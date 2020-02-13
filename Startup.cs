@@ -25,10 +25,8 @@ namespace DotNetCoreSqlDb
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
-
-            // Use SQL Database if in Azure, otherwise, use SQLite
-           services.AddDbContext<MyDatabaseContext>(options =>
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);          
+            services.AddDbContext<MyDatabaseContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
             services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
         }
